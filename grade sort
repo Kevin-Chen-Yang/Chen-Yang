@@ -1,0 +1,32 @@
+#include<iostream>
+#include<algorithm>
+#include<iomanip>
+#include<string>
+#include<fstream>
+using namespace std;
+struct Student{
+	int *grade,ave;
+	string name;
+};
+bool compare(Student &a,Student &b){
+	return a.ave<b.ave;
+}
+int main(){
+	ofstream f1("D:\student.text");
+	int newStu,newGra,sum=0;
+	cin>>newStu>>newGra;
+	Student *p=new Student[newStu];
+	for(int i=0;i<newStu;i++){
+		cin>>p[i].name;
+		p[i].grade=new int[newGra];	
+		for(int j=0;j<newGra;j++)
+			cin>>p[i].grade[j];
+		for(int j=0;j<newGra;j++)
+			sum+=p[i].grade[j];
+		p[i].ave=sum/newGra;
+}
+	sort(p,p+newStu,compare);
+	for(int i=0;i<newStu;i++)
+		f1<<setw(2)<<i+1<<setw(5)<<p[i].name<<endl;
+	return 0;
+}
