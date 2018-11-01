@@ -1,0 +1,44 @@
+#include<cmath>
+const double pi=3.14159;
+class Shape{
+public:
+	virtual int area()=0;
+};
+class Circle:public Shape{
+private:
+	int r;
+public:
+	Circle(int a):r(a){};
+	int area(){return pi*r*r;}
+};
+class Square:public Shape{
+private:
+	int width;
+public:
+	Square(int a):width(a){}
+	int area(){return width*width;}
+};
+class Rectangle:public Shape{
+int width,length;
+public:
+	Rectangle(int a,int b):width(a),length(b){}
+	int area(){return width*length;}
+};
+class Triangle:public Shape{
+int a,b,c;
+public:
+	Triangle(int a1,int a2,int a3):a(a1),b(a2),c(a3){}
+	int area(){int p=(a+b+c)/2; return(sqrt(p*(p-a)*(p-b)*(p-c)));}
+};
+int main(){
+	int sum=0;
+	Shape *p[4];
+	Circle c1(3);
+	Square s1(4);
+	Rectangle r1(4,5);
+	Triangle t1(3,4,5);
+	p[0]=&c1;p[1]=&s1;p[2]=&r1;p[3]=&t1;
+	for(int i=0;i<4;i++){
+		sum+=p[i]->area();}
+	return sum;
+}
