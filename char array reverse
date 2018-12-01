@@ -1,0 +1,15 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+bool compare(char s1,char s2){
+	return s1>s2;
+}
+void fun(char *s,int n){
+	sort(s+1,s+n-1,compare);
+}
+
+int main(){
+	char a[]="zabcdel";
+	fun(a,7);
+	cout<<a<<endl;
+}
