@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+const int size=50;
+class Stack{
+	private:
+		char stck[::size];
+		int tos;
+	public:
+		Stack():tos(0){}
+		void push(char ch){
+			if(tos==size)
+				cout<<"Stack is full!\n";
+			else
+				stck[tos++]=ch;
+		}
+		char pop(){
+			if(tos==0)
+				cout<<"Stack is null!\n";
+			else
+				return stck[--tos];
+		}
+};
+int main(){
+	Stack stck;
+	stck.pop();
+	stck.push('5');
+	stck.pop();
+}
