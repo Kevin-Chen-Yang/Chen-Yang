@@ -1,0 +1,60 @@
+const int pi=3.1415926;
+#include<iostream>
+using namespace std;
+class Body{
+	public:
+		double data;
+		Body(){}
+		Body(double a):data(a){}
+		virtual double GetVolume()=0;
+		virtual double GetArea()=0;
+		virtual double GetData()=0;
+};
+class Globe:public Body{
+	public:
+		Globe(double a):Body(a){}
+		double GetVolume(){
+			return 4/3*pi*data*data*data;
+		}
+		double GetArea(){
+			return 4*pi*data*data;
+		}
+		double GetData(){
+			return data;
+		}
+};
+class Square:public Body{
+	public:
+		Square(double a):Body(a){}
+		double GetArea(){
+			return 6*data*data;
+		}
+		double GetVolume(){
+			return data*data*data;
+		}	
+		double GetData(){
+			return data;
+		}
+};
+class Colume:public Body{
+	double h;
+	public:
+		Colume(double a,double b):Body(a){h=b;}
+		double GetVolume(){
+			return pi*data*data*h;
+		}
+		double GetArea(){
+			return 2*pi*data*data+2*pi*data*h;
+		}
+		double GetData(){
+			return data;
+		}	
+};
+int main(){
+	Globe g1(3.5);
+	Square s1(4.2);
+	Colume c1(2.5,3.5);
+	cout<<"Globe's r,area and volume is:"<<g1.GetData()<<"  "<<g1.GetArea()<<"  "<<g1.GetVolume()<<endl;
+	cout<<"Square's r,area and volume is:"<<s1.GetData()<<"  "<<s1.GetArea()<<"  "<<s1.GetVolume()<<endl;
+	cout<<"Column's r,area and volume is:"<<c1.GetData()<<"  "<<c1.GetArea()<<"  "<<c1.GetVolume()<<endl;	
+}
