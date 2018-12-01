@@ -1,0 +1,27 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+class Score{
+	int n;
+	double *a;
+	public:
+		Score(double *arr,int t):a(arr),n(t){}
+		void getresult(){
+			double sum=0;
+			for(int i=1;i<n-1;i++)
+				sum+=a[i];
+			cout<<"Average' score is:"<<sum/(n-2)<<endl;
+		}
+};
+int main(){
+	int num;
+	cin>>num;
+	double *arr=new double [num];
+	for(int i=0;i<num;i++){
+		cin>>arr[i];
+	}
+	sort(arr,arr+num);
+	Score s1(arr,num);
+	s1.getresult();
+	delete arr;
+}
