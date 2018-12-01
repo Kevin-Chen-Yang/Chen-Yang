@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+class Shape{
+	public:
+		Shape(){};
+		virtual double area()=0;
+};
+class Circle :public Shape{
+	double r;
+	public:
+		Circle(double a):r(a){}
+		double area(){
+			return 3.14159*r*r;
+		}
+	};
+class Square :public Shape{
+	double width;
+	public:
+		Square(double a):width(a){}
+		double area(){
+			return width*width;
+		}
+};
+class Rectangle:public Shape{
+	double length,width;
+	public:
+		Rectangle(double a ,double b):length(a),width(b){}
+		double area(){
+			return length*width;
+		}
+};
+class Triangle:public Shape{
+	double h,d;
+	public:
+		Triangle(double a,double b):h(a),d(b){}
+		double area(){
+			return h*d/2;
+		}
+};
+int main(){
+	int sum=0;
+	Shape *derive[4];
+	derive[0]=new Circle(3.0);
+	derive[1]=new Square(2.5);
+	derive[2]=new Rectangle(3.0,4.0);
+	derive[3]=new Triangle(4.0,2.5);
+	for(int i=0;i<4;i++){
+		cout<<"derive"<<i<<"'s area is:"<<derive[i]->area()<<endl;
+		sum+=derive[i]->area();}
+	cout<<"Area's sum="<<sum<<endl;
+}
