@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+int main(){
+	double x;
+	int c1=0,c2=0,c3=0;
+	while(1){
+		cin>>x;
+		if(x<0){
+			break;
+		}
+		else if(x>0 &&x<=12)
+			c1++;
+		else if(x>12 &&x<=15)
+			c2++;
+		else
+			c3++;
+		
+	}
+	cout<<"本次测试结果："<<endl;
+	cout<<"优秀人数："<<c1<<endl;
+	cout<<"达标人数："<<c2<<endl;
+	cout<<"不达标人数："<<c3<<endl; 
+}
