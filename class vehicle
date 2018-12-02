@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+class Vehicle{
+	double maxSpeed,currentSpeed,weight;
+	public:
+		Vehicle(){}
+		Vehicle(double a,double b,double c):maxSpeed(a),currentSpeed(b),weight(c){}
+		void star(){
+			cout<<"start!\n"<<"currentSpeed is:"<<currentSpeed<<endl;
+		}
+		void stop(){
+			cout<<"stop!\n"<<"currentSpeed is:"<<currentSpeed<<endl;
+		}
+};
+class Bicycle :virtual public Vehicle{
+	double height;
+	public:
+		Bicycle(double a,double b,double c,double d):Vehicle(a,b,c){height=d;}
+};
+class Motocar:virtual public Vehicle{
+	int seatNum;
+	public:
+		Motocar(double a,double b,double c,int d):Vehicle(a,b,c){seatNum=d;}
+};
+class Motocycle : public Bicycle,public Motocar{
+	public:
+		Motocycle(double a,double b,double c,double d,int e):Vehicle(a,b,c),Bicycle(a,b,c,d),Motocar(a,b,c,e){}
+};
+int main(){
+	Vehicle v1(280,120.5,230);
+	Bicycle b1(60.1,30.2,80.3,90.5);
+	Motocar m1(260,100.5,210.8,4);
+	Motocycle mc1(120,50.3,120,150.5,4);
+	v1.star();v1.stop();
+	b1.star();b1.stop();
+	m1.star();m1.stop();
+	mc1.star();mc1.stop();
+}
