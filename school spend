@@ -1,0 +1,53 @@
+#include<fstream>
+#include<string>
+#include<iostream>
+using namespace std;
+class School{
+	string id;
+	string name;
+	double cost;
+	public:
+		School(){}
+		School(string a,string b,double c):id(a),name(b),cost(c){}
+		string getid(){return id;}
+		void putid(string a){id=a;}
+		string getname(){return name;}
+		void putname(string a){name=a;}
+		double	getcost(){return cost;}
+		void putcost(double a){cost=a;}
+};
+class MaxSchool{
+	School str[10];
+	public:
+		MaxSchool(){
+			ifstream in("D:\\a.txt");
+			string n_id;
+			string n_name;
+			double n_cost;
+			for (int i=0;i<5;i++){
+				in>>n_id;
+				in>>n_name;
+				in>>n_cost;
+				str[i].putid(n_id);
+				str[i].putname(n_name);
+				str[i].putcost(n_cost);
+			}
+		in.close();
+		}
+	void Maxcost(){
+		int a=0;
+		double max=str[0].getcost();
+		for(int i=1;i<5;i++){
+			if(str[i].getcost()>max){
+				max=str[i].getcost();
+				a=i;
+			}
+		}
+		cout<<"双十一花费最大的学校是："<<str[a].getid()<<"  "<<str[a].getname()<<"  "<<str[a].getcost()<<endl;
+}
+	~MaxSchool(){}
+};
+int main(){
+	MaxSchool M1;
+	M1.Maxcost();
+}
