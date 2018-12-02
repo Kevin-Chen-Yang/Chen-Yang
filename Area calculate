@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+const double pi=3.1415926;
+class Shape{
+	public:
+		Shape(){}
+		virtual void printArea()=0;
+};
+class Circle:public Shape{
+	double r;
+	public:
+		Circle(double a):r(a){}
+		void printArea(){
+			cout<<"Circle's Area is："<<(pi*r*r)<<endl; 
+		}
+};
+class Rectangle:public Shape{
+	double width,length;
+	public:
+		Rectangle(double a,double b):width(a),length(b){}
+		void printArea(){
+			cout<<"Rectangle's Area is:"<<(width*length)<<endl;
+		}
+};
+class Triangle:public Shape{
+	double h,s;
+	public:
+		Triangle(double a,double b):h(a),s(b){}
+		void printArea(){
+			cout<<"Triangle's Area is:"<<(h*s/2)<<endl; 
+		}
+};
+int main(){
+	Circle c1(2.5);
+	Rectangle r1(4.0,3.0);
+	Triangle t1(3.0,7.2);
+	c1.printArea();
+	r1.printArea();
+	t1.printArea(); 
+} 
