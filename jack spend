@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+class Goods{
+	double price;
+	int num;
+	public:
+		Goods(double a,int b):price(a),num(b){}
+		double cost(){
+			return price*num;
+		}
+};
+int main(){
+	Goods jack(30.8,5);
+	cout<<"双十一，jack 花费："<<jack.cost()<<endl; 
+}
